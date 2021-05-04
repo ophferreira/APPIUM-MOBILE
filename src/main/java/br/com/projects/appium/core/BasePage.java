@@ -4,8 +4,8 @@ import static br.com.projects.appium.core.DriverFactory.getDriver;
 
 import org.openqa.selenium.By;
 
-public class DSL {
-	
+public class BasePage {
+
 	public void write(By by, String text) {
 		getDriver().findElement(by).sendKeys(text);
 	}

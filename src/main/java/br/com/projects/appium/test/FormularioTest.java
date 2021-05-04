@@ -4,16 +4,15 @@ import static org.junit.Assert.assertEquals;
 
 import java.net.MalformedURLException;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.projects.appium.core.DriverFactory;
+import br.com.projects.appium.core.BaseTest;
 import br.com.projects.appium.page.FormsPage;
 import br.com.projects.appium.page.MenuPage;
 
-public class FormularioTest {
+public class FormularioTest extends BaseTest {
 	
 	private MenuPage menu = new MenuPage();
 	private FormsPage forms = new FormsPage();
@@ -61,10 +60,5 @@ public class FormularioTest {
 	    Assert.assertEquals("Console: switch", forms.getConsoleCadastrado());
 	    Assert.assertTrue(forms.getCbxCadastrado().endsWith("Marcado"));
 	    Assert.assertTrue(forms.getSwitchCadastrado().endsWith("Off"));
-	}
-	
-	@After
-	public void tearDown() {
-		DriverFactory.killDriver();
 	}
 }
