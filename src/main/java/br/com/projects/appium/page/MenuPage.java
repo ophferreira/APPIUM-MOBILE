@@ -7,4 +7,12 @@ public class MenuPage extends BasePage {
 	public void acessarFormulario() {
 		clickText("Formulário");
 	}
+	
+	public void acessarSplash() {
+		clickText("Splash");
+	}
+	
+	public void acessarAlertas() {
+		clickText("Alertas");
+	}
 }
