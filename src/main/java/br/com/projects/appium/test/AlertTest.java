@@ -1,6 +1,7 @@
 package br.com.projects.appium.test;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import br.com.projects.appium.core.BaseTest;
@@ -12,11 +13,14 @@ public class AlertTest extends BaseTest {
 	private MenuPage menu = new MenuPage();
 	private AlertPage alert = new AlertPage();
 	
-	@Test
-	public void confirmarAlert() {
+	@Before
+	public void setup() {
 		//acessar menu Alerta
 		menu.acessarAlertas();
-		
+	}
+	
+	@Test
+	public void confirmarAlert() {		
 		//clicar em alerta confirm
 		alert.clicarAlertaConfirm();
 		
@@ -34,4 +38,16 @@ public class AlertTest extends BaseTest {
 		alert.sair();
 	}
 
+	@Test
+	public void clicarForaAlerta() throws InterruptedException {
+		//clicar alerta simples
+		alert.clicarAlertaSimples();
+		
+		//clicar fora da caixa
+		Thread.sleep(1000);
+		alert.clicarForaCaixa();
+		
+		//validar ausência da mensagem
+		Assert.assertFalse(alert.existElementText("Pode clicar no OK ou fora da caixa para sair"));
+	}
 }

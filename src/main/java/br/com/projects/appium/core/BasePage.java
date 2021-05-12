@@ -7,6 +7,8 @@ import java.util.List;
 import org.openqa.selenium.By;
 
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.offset.PointOption;
 
 public class BasePage {
 
@@ -23,7 +25,7 @@ public class BasePage {
 	}
 	
 	public void clickText(String text) {
-		click(By.xpath("//*[@text='"+ text +"']"));
+		click(By.xpath("//*[@text='"+text+"']"));
 	}
 	
 	public void selectCombo(By by, String value) {
@@ -42,5 +44,9 @@ public class BasePage {
 		List<MobileElement> elements = getDriver().findElements(By.xpath("//*[@text='"+text+"']"));
 		
 		return elements.size() > 0;
+	}
+	
+	public void tap(int x, int y) {
+		new TouchAction<>(getDriver()).tap(PointOption.point(x, y)).perform();
 	}
 }

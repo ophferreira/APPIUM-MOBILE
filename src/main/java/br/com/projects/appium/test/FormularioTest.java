@@ -11,6 +11,7 @@ import org.junit.Test;
 import br.com.projects.appium.core.BaseTest;
 import br.com.projects.appium.page.FormsPage;
 import br.com.projects.appium.page.MenuPage;
+import io.appium.java_client.MobileBy;
 
 public class FormularioTest extends BaseTest {
 	
@@ -60,5 +61,22 @@ public class FormularioTest extends BaseTest {
 	    Assert.assertEquals("Console: switch", forms.getConsoleCadastrado());
 	    Assert.assertTrue(forms.getCbxCadastrado().endsWith("Marcado"));
 	    Assert.assertTrue(forms.getSwitchCadastrado().endsWith("Off"));
+	}
+	
+	@Test
+	public void alterarData() {
+		forms.clickText("01/01/2000");
+		forms.clickText("20");
+		forms.clickText("OK");
+		Assert.assertTrue(forms.existElementText("20/2/2000"));
+	}
+	
+	@Test
+	public void alterarHora() {
+		forms.clickText("06:00");
+		forms.click(MobileBy.AccessibilityId("10"));
+		forms.click(MobileBy.AccessibilityId("40"));
+		forms.clickText("OK");
+		Assert.assertTrue(forms.existElementText("10:40"));
 	}
 }
